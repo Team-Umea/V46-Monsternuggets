@@ -92,7 +92,7 @@ function displayMonsters() {
             <img src="${monster.image}" alt="${monster.name}">
             <h3>${monster.name}</h3>
             <p>${monster.speciality}</p>
-            <p>Strenght: ${monster.strength}<p>
+            <p>Strength: ${monster.strength}<p>
             <button onclick="addToTeam(${monster.id})">Add to my team</button>
         `;
 
