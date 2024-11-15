@@ -91,10 +91,11 @@ function displayMonsters() {
         const addButton = document.createElement("button");
         addButton.textContent = "Add to my team";
         addButton.addEventListener("click", () => {
-        
-        addTeam()
+        saveTeamToLocalStorage();
+        addTeam();
         console.log(myTeam);
-           
+        console.log(teamJson);
+        
         });
         
 
@@ -132,8 +133,8 @@ function saveTeamToLocalStorage() {
 }
 
 function loadTeamFromLocalStorage () {
-        const teamJSON = localStorage.getItem('myTeam');
-        return teamJSON ? JSON.parse(teamJSON) : [];
+        const teamJson = localStorage.getItem('myTeam');
+        return teamJson ? JSON.parse(teamJson) : [];
     }
 
 function clearLocalStorage(params) {
