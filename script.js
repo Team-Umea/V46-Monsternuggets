@@ -1,5 +1,7 @@
 
+const myTeam = [];
 const monsters = [
+    
 
     {
         "id": 0,
@@ -40,30 +42,24 @@ const monsters = [
         },
         {
         "id": 6,
-        "name": "Troll",
-        "speciality": "A gentle soul who wants to be your ally (read friend)",
-        "image": "img.monsters/troll.png"
-        },
-        {
-        "id": 7,
         "name": "Witch",
         "speciality": "She's mostly into animals and love potions.",
         "image": "img.monsters/witch.png"
     },
     {
-        "id": 8,
+        "id": 7,
         "name": "Coding Monster",
         "speciality": "0001 0101 1100 0110 0011 0011 1110",
         "image": "img.monsters/nerd.png"
     },
     {
-        "id": 9,
+        "id": 8,
         "name": "Fire monster",
         "speciality": "Fight Fire with Fire",
         "image": "img.monsters/firemonster.png"
     },
     {
-        "id": 10,
+        "id": 9,
         "name": "Water monster",
         "speciality": "Singing in the rain!",
         "image": "img.monsters/watermonster.png"
@@ -76,37 +72,64 @@ const monsters = [
 function displayMonsters() {
     const catalog = document.getElementById("monster-catalog");
     catalog.innerHTML = ""; 
-    
-    monsters.forEach((monster, index) => {
+
+    monsters.forEach((monster) => {
         const monsterDiv = document.createElement("div");
         monsterDiv.classList.add("monster");
+
+        const monsterName = document.createElement("h2");
+        monsterName.textContent = monster.name;
+
+        const monsterSpec = document.createElement("p");
+        monsterSpec.textContent = monster.speciality;
+
+
+        const monsterImage = document.createElement("img");
+        monsterImage.src = monster.image;
+        monsterImage.alt = monster.name;
+
+        const addButton = document.createElement("button");
+        addButton.textContent = "Add to my team";
+        addButton.addEventListener("click", () => {
         
-        monsterDiv.innerHTML = `
-        <img src="${monster.image}" alt="${monster.name}">
-        <h3>${monster.name}</h3>
-        <p>${monster.speciality}</p>
-        <p>Strenght: ${monster.strenght}<p>
-        <button class="addButton" data-index="${index}">Add to my team</button>
-        `;
-        
-        catalog.appendChild(monsterDiv);
-    });
-    const buttonOne = document.querySelectorAll(".addButton");
-    buttonOne.forEach(button => {
-        button.addEventListener("click", function () {
-            const index = this.getAttribute("data-index");
-            console.log(`Du tryckte på knappen för: ${monsters[index].name}`);
+        addTeam()
+        console.log(myTeam);
+           
         });
+        
+
+
+        monsterDiv.appendChild(monsterImage);
+        monsterDiv.appendChild(monsterName);
+        monsterDiv.appendChild(monsterSpec);
+        monsterDiv.appendChild(addButton);
+        catalog.appendChild(monsterDiv);
+
+        function addTeam(params) {
+    monsterDiv.style.backgroundColor = "green"
+    myTeam.push(monster)
+  
+    
+
+
+      
+        }
+        function deleteTeamAll(params) {
+    
+        }    
     });
+   
 }
 
-
+// const newMonster=document.querySelectorAll(".monster")
 
 window.onload = displayMonsters;
 
 
-
-
-   
+function localStorage() {
     
+}
+function deleteTeamMember(params) {
     
+}
+
