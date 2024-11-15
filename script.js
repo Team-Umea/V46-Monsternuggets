@@ -100,10 +100,10 @@ function displayMonsters() {
 function addToMyTeam(monster) {
     myTeam.push(monster); 
     saveTeamToLocalStorage();
-    displayMyTeam(); 
+    renderTeam(); 
 }
 
-function displayMyTeam() {
+function renderTeam() {
     const teamSection = document.getElementById("my-team");
     teamSection.innerHTML = ""; 
 
@@ -127,11 +127,19 @@ function displayMyTeam() {
             removeFromMyTeam(monster); 
         });
 
+        const clearAllButton = document.createElement("button");
+        clearAllButton.textContent = "Clear team";
+        clearAllButton.addEventListener("click", function() {
+            clearLocalStorage();
+            clearTeam();
+            renderTeam();
+        });
+
         teamDiv.appendChild(image);
         teamDiv.appendChild(name);
         teamDiv.appendChild(spec);
         teamDiv.appendChild(removeButton);
-
+        teamDiv.appendChild(clearAllButton);
         teamSection.appendChild(teamDiv); 
     });
 }
@@ -139,7 +147,7 @@ function displayMyTeam() {
 function removeFromMyTeam(monster) {
     myTeam = myTeam.filter(m => m.id !== monster.id);
     saveTeamToLocalStorage();
-    displayMyTeam();
+    renderTeam();
 }
 
 function saveTeamToLocalStorage() {
@@ -156,10 +164,14 @@ function clearLocalStorage() {
     localStorage.clear();
 }
 
+function clearTeam() {
+    myTeam = [];
+}
+
 window.onload = () => {
     myTeam = loadTeamFromLocalStorage(); 
     displayMonsters(); 
-    displayMyTeam(); 
+    renderTeam(); 
 };
 
 console.log("HEHEJ")
