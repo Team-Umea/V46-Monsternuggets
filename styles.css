@@ -83,7 +83,7 @@ p {
     text-align: center; 
 }
 #my-team {
-    background-color: rgba(0, 128, 0, 0.8);
+    background: linear-gradient(to right, #660099, #ff66b3);
     padding: 20px;
     border-radius: 15px;
     margin: 20px;
@@ -96,6 +96,7 @@ p {
 }
 
 .team-member {
+    
     grid-column: span 1;
     grid-row: span 1;
     display: flex;
@@ -107,7 +108,7 @@ p {
 .team-member img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 30px;
     margin-bottom: 10px;
 }
 

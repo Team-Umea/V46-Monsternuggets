@@ -183,7 +183,13 @@ function saveTeamToLocalStorage() {
 
 function loadTeamFromLocalStorage() {
     const teamJson = localStorage.getItem('myTeam');
-    return teamJson ? JSON.parse(teamJson) : [];
+    try {
+        return teamJson ? JSON.parse(teamJson) : [];
+        
+    } catch (error) {
+        console.error("error with the storage", error)
+        
+    }
 }
 
 function clearLocalStorage() {
