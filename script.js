@@ -1,3 +1,4 @@
+
 const monsters = [
 
     {
@@ -48,47 +49,64 @@ const monsters = [
         "name": "Witch",
         "speciality": "She's mostly into animals and love potions.",
         "image": "img.monsters/witch.png"
-        },
-        {
-            "id": 8,
-            "name": "Coding Monster",
-            "speciality": "0001 0101 1100 0110 0011 0011 1110",
-            "image": "img.monsters/nerd.png"
-        },
-        {
-            "id": 9,
-            "name": "Fire monster",
-            "speciality": "Fight Fire with Fire",
-            "image": "img.monsters/firemonster.png"
-        },
-        {
-            "id": 10,
-            "name": "Water monster",
-            "speciality": "Singing in the rain!",
-            "image": "img.monsters/watermonster.png"
-        }
+    },
+    {
+        "id": 8,
+        "name": "Coding Monster",
+        "speciality": "0001 0101 1100 0110 0011 0011 1110",
+        "image": "img.monsters/nerd.png"
+    },
+    {
+        "id": 9,
+        "name": "Fire monster",
+        "speciality": "Fight Fire with Fire",
+        "image": "img.monsters/firemonster.png"
+    },
+    {
+        "id": 10,
+        "name": "Water monster",
+        "speciality": "Singing in the rain!",
+        "image": "img.monsters/watermonster.png"
+    }
 ];
+
+
 
 
 function displayMonsters() {
     const catalog = document.getElementById("monster-catalog");
     catalog.innerHTML = ""; 
-
-    monsters.forEach(monster => {
+    
+    monsters.forEach((monster, index) => {
         const monsterDiv = document.createElement("div");
         monsterDiv.classList.add("monster");
-
+        
         monsterDiv.innerHTML = `
-            <img src="${monster.image}" alt="${monster.name}">
-            <h3>${monster.name}</h3>
-            <p>${monster.speciality}</p>
-            <p>Strenght: ${monster.strenght}<p>
-            <button onclick="addToTeam(${monster.id})">Add to my team</button>
+        <img src="${monster.image}" alt="${monster.name}">
+        <h3>${monster.name}</h3>
+        <p>${monster.speciality}</p>
+        <p>Strenght: ${monster.strenght}<p>
+        <button class="addButton" data-index="${index}">Add to my team</button>
         `;
-
+        
         catalog.appendChild(monsterDiv);
+    });
+    const buttonOne = document.querySelectorAll(".addButton");
+    buttonOne.forEach(button => {
+        button.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            console.log(`Du tryckte på knappen för: ${monsters[index].name}`);
+        });
     });
 }
 
 
+
 window.onload = displayMonsters;
+
+
+
+
+   
+    
+    
