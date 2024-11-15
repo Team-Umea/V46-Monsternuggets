@@ -1,11 +1,11 @@
-let myTeam = []; // Changed const to let
-const monsters = [
+let myTeam = []; 
+let monsters = [
     {
         "id": 0,
         "name": "Count Dracula",
         "speciality": "Sleep, spook, drink blood, repeat",
         "image": "img.monsters/dracula.png",
-        "strength": 6 // Fixed typo here
+        "strength": 6 
     },
     {
         "id": 1,
@@ -67,7 +67,21 @@ function displayMonsters() {
     const catalog = document.getElementById("monster-catalog");
     catalog.innerHTML = ""; 
 
-    monsters.forEach((monster) => {
+    for (let i = 0; i < monsters.length; i++) {
+        const monster = monsters[i];
+
+
+        let alreadyInTeam = false;
+        for (let j = 0; j < myTeam.length; j++) {
+            if (myTeam[j].id === monster.id) {
+                alreadyInTeam = true;
+                break;         }
+        }
+
+        if (alreadyInTeam) {
+            continue;
+        }
+
         const monsterDiv = document.createElement("div");
         monsterDiv.classList.add("monster");
 
@@ -76,7 +90,6 @@ function displayMonsters() {
 
         const spec = document.createElement("p");
         spec.textContent = monster.speciality;
-
 
         const image = document.createElement("img");
         image.src = monster.image;
@@ -92,16 +105,11 @@ function displayMonsters() {
         monsterDiv.appendChild(name);
         monsterDiv.appendChild(spec);
         monsterDiv.appendChild(addButton);
-
         catalog.appendChild(monsterDiv);
-    });
+    }
 }
 
-function addToMyTeam(monster) {
-    myTeam.push(monster); 
-    saveTeamToLocalStorage();
-    renderTeam(); 
-}
+
 
 function renderTeam() {
     const teamSection = document.getElementById("my-team");
@@ -143,7 +151,19 @@ function renderTeam() {
         teamSection.appendChild(teamDiv); 
     });
 }
+function addToMyTeam(monster) {
 
+    if (myTeam.length < 3) {
+        myTeam.push(monster);
+        
+    } else {
+        errorHandling()
+        console.log(errorHandling);  
+    }
+    saveTeamToLocalStorage();
+    renderTeam(); 
+    displayMonsters()
+}
 function removeFromMyTeam(monster) {
     for (let i = 0; i < myTeam.length; i++) {
         if (myTeam[i].id === monster.id) {
@@ -153,6 +173,7 @@ function removeFromMyTeam(monster) {
     }
     saveTeamToLocalStorage();
     renderTeam();
+    displayMonsters()
 }
 
 function saveTeamToLocalStorage() {
@@ -172,6 +193,19 @@ function clearLocalStorage() {
 function clearTeam() {
     myTeam = [];
 }
+function errorHandling() {
+    
+    const errorMessage = document.createElement("h4");
+    errorMessage.setAttribute("class","error");
+    errorMessage.innerText = "Your team is full u need to clear player to add a new one";
+    
+    
+    document.body.appendChild(errorMessage)
+    setTimeout(() => {
+        errorMessage.remove()
+    }, 3000);
+}
+
 
 window.onload = () => {
     myTeam = loadTeamFromLocalStorage(); 
@@ -179,4 +213,3 @@ window.onload = () => {
     renderTeam(); 
 };
 
-console.log("HEHEJ")
