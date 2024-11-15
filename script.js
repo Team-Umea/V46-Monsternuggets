@@ -77,8 +77,6 @@ function displayMonsters() {
         const spec = document.createElement("p");
         spec.textContent = monster.speciality;
 
-        const strength = document.createElement("p");
-        strength.textContent = `Strength: ${monster.strength || "N/A"}`; // Fixed typo here
 
         const image = document.createElement("img");
         image.src = monster.image;
@@ -88,13 +86,11 @@ function displayMonsters() {
         addButton.textContent = "Add to my team";
         addButton.addEventListener("click", () => {
             addToMyTeam(monster);
-            monsterDiv.style.backgroundColor = "green"; // Change color when added
         });
 
         monsterDiv.appendChild(image);
         monsterDiv.appendChild(name);
         monsterDiv.appendChild(spec);
-        monsterDiv.appendChild(strength);
         monsterDiv.appendChild(addButton);
 
         catalog.appendChild(monsterDiv);
@@ -161,7 +157,9 @@ function clearLocalStorage() {
 }
 
 window.onload = () => {
-    myTeam = loadTeamFromLocalStorage(); // Load team from local storage on load
+    myTeam = loadTeamFromLocalStorage(); 
     displayMonsters(); 
-    displayMyTeam(); // Display the team if it was previously saved
+    displayMyTeam(); 
 };
+
+console.log("HEHEJ")
