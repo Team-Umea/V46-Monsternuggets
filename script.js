@@ -126,10 +126,24 @@ function displayMonsters() {
 window.onload = displayMonsters;
 
 
-function localStorage() {
-    
+function saveTeamToLocalStorage() {
+    const teamJson = JSON.stringify(myTeam);
+    localStorage.setItem("myTeam", teamJson)
 }
+
+function loadTeamFromLocalStorage () {
+        const teamJSON = localStorage.getItem('myTeam');
+        return teamJSON ? JSON.parse(teamJSON) : [];
+    }
+
+function clearLocalStorage(params) {
+    localStorage.clear()
+}
+
+
+
 function deleteTeamMember(params) {
+
     
 }
 
