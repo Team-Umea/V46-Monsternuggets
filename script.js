@@ -152,7 +152,7 @@ function removeFromMyTeam(monster) {
         }
     }
     saveTeamToLocalStorage();
-    displayMyTeam();
+    renderTeam();
 }
 
 function saveTeamToLocalStorage() {
