@@ -145,9 +145,14 @@ function renderTeam() {
 }
 
 function removeFromMyTeam(monster) {
-    myTeam = myTeam.filter(m => m.id !== monster.id);
+    for (let i = 0; i < myTeam.length; i++) {
+        if (myTeam[i].id === monster.id) {
+            myTeam.splice(i, 1);
+            break; 
+        }
+    }
     saveTeamToLocalStorage();
-    renderTeam();
+    displayMyTeam();
 }
 
 function saveTeamToLocalStorage() {
