@@ -1,12 +1,11 @@
-const myTeam = [];
+let myTeam = []; // Changed const to let
 const monsters = [
-    
     {
         "id": 0,
         "name": "Count Dracula",
         "speciality": "Sleep, spook, drink blood, repeat",
         "image": "img.monsters/dracula.png",
-        "strenght": 6
+        "strength": 6 // Fixed typo here
     },
     {
         "id": 1,
@@ -63,7 +62,6 @@ const monsters = [
         "image": "img.monsters/watermonster.png"
     }
 ];
- 
 
 function displayMonsters() {
     const catalog = document.getElementById("monster-catalog");
@@ -73,7 +71,6 @@ function displayMonsters() {
         const monsterDiv = document.createElement("div");
         monsterDiv.classList.add("monster");
 
-
         const name = document.createElement("h2");
         name.textContent = monster.name;
 
@@ -81,67 +78,38 @@ function displayMonsters() {
         spec.textContent = monster.speciality;
 
         const strength = document.createElement("p");
-        strength.textContent = `Strength: ${monster.strenght || "N/A"}`;
+        strength.textContent = `Strength: ${monster.strength || "N/A"}`; // Fixed typo here
 
         const image = document.createElement("img");
         image.src = monster.image;
         image.alt = monster.name;
 
-        const monsterName = document.createElement("h2");
-        monsterName.textContent = monster.name;
-
-        const monsterSpec = document.createElement("p");
-        monsterSpec.textContent = monster.speciality;
-
-
-        const monsterImage = document.createElement("img");
-        monsterImage.src = monster.image;
-        monsterImage.alt = monster.name;
-
-
         const addButton = document.createElement("button");
         addButton.textContent = "Add to my team";
         addButton.addEventListener("click", () => {
-
-            console.log(`${monster.name} added to your team`);
             addToMyTeam(monster);
+            monsterDiv.style.backgroundColor = "green"; // Change color when added
         });
 
-
-        catalog.appendChild(monsterDiv);
-        saveTeamToLocalStorage();
-        addTeam();
-        console.log(myTeam);
-        console.log(teamJson);
-        
-        });
-        
-
-
-        monsterDiv.appendChild(monsterImage);
-        monsterDiv.appendChild(monsterName);
-        monsterDiv.appendChild(monsterSpec);
+        monsterDiv.appendChild(image);
+        monsterDiv.appendChild(name);
+        monsterDiv.appendChild(spec);
+        monsterDiv.appendChild(strength);
         monsterDiv.appendChild(addButton);
+
         catalog.appendChild(monsterDiv);
-
-        function addTeam(params) {
-    monsterDiv.style.backgroundColor = "green"
-    myTeam.push(monster)
-  
-
-
+    });
+}
 
 function addToMyTeam(monster) {
-        myTeam.push(monster); 
-        displayMyTeam(); 
+    myTeam.push(monster); 
+    saveTeamToLocalStorage();
+    displayMyTeam(); 
 }
 
 function displayMyTeam() {
     const teamSection = document.getElementById("my-team");
     teamSection.innerHTML = ""; 
-
-// const newMonster=document.querySelectorAll(".monster")
-
 
     myTeam.forEach((monster) => {
         const teamDiv = document.createElement("div");
@@ -150,24 +118,8 @@ function displayMyTeam() {
         const name = document.createElement("h2");
         name.textContent = monster.name;
 
-
         const spec = document.createElement("p");
         spec.textContent = monster.speciality;
-
-function saveTeamToLocalStorage() {
-    const teamJson = JSON.stringify(myTeam);
-    localStorage.setItem("myTeam", teamJson)
-}
-
-function loadTeamFromLocalStorage () {
-        const teamJson = localStorage.getItem('myTeam');
-        return teamJson ? JSON.parse(teamJson) : [];
-    }
-
-function clearLocalStorage(params) {
-    localStorage.clear()
-}
-
 
         const image = document.createElement("img");
         image.src = monster.image;
@@ -190,15 +142,26 @@ function clearLocalStorage(params) {
 
 function removeFromMyTeam(monster) {
     myTeam = myTeam.filter(m => m.id !== monster.id);
+    saveTeamToLocalStorage();
     displayMyTeam();
 }
 
-window.onload = () => {
-    displayMonsters(); 
-};
-
-function deleteTeamMember(params) {
-
-    
+function saveTeamToLocalStorage() {
+    const teamJson = JSON.stringify(myTeam);
+    localStorage.setItem("myTeam", teamJson);
 }
 
+function loadTeamFromLocalStorage() {
+    const teamJson = localStorage.getItem('myTeam');
+    return teamJson ? JSON.parse(teamJson) : [];
+}
+
+function clearLocalStorage() {
+    localStorage.clear();
+}
+
+window.onload = () => {
+    myTeam = loadTeamFromLocalStorage(); // Load team from local storage on load
+    displayMonsters(); 
+    displayMyTeam(); // Display the team if it was previously saved
+};
