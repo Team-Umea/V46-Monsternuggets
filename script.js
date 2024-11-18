@@ -156,8 +156,7 @@ function addToMyTeam(monster) {
         myTeam.push(monster);
         
     } else {
-        errorHandling()
-        console.log(errorHandling);  
+        errorHandling()  
     }
     saveTeamToLocalStorage();
     renderTeam(); 
