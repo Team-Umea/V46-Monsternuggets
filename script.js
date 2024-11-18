@@ -70,7 +70,6 @@ function displayMonsters() {
     for (let i = 0; i < monsters.length; i++) {
         const monster = monsters[i];
 
-
         let alreadyInTeam = false;
         for (let j = 0; j < myTeam.length; j++) {
             if (myTeam[j].id === monster.id) {
@@ -141,6 +140,7 @@ function renderTeam() {
             clearLocalStorage();
             clearTeam();
             renderTeam();
+            displayMonsters();
         });
 
         teamDiv.appendChild(image);
@@ -151,8 +151,8 @@ function renderTeam() {
         teamSection.appendChild(teamDiv); 
     });
 }
-function addToMyTeam(monster) {
 
+function addToMyTeam(monster) {
     if (myTeam.length < 3) {
         myTeam.push(monster);
         
@@ -164,6 +164,7 @@ function addToMyTeam(monster) {
     renderTeam(); 
     displayMonsters()
 }
+
 function removeFromMyTeam(monster) {
     for (let i = 0; i < myTeam.length; i++) {
         if (myTeam[i].id === monster.id) {
@@ -211,7 +212,6 @@ function errorHandling() {
         errorMessage.remove()
     }, 3000);
 }
-
 
 window.onload = () => {
     myTeam = loadTeamFromLocalStorage(); 

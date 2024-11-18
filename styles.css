@@ -2,9 +2,11 @@
     padding: 0;
     margin: 0; 
 }
+
 html {
     background-color: black;
 }
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #1c1c1c80;
@@ -51,7 +53,6 @@ button {
     cursor: pointer;
 }
 
-
 h1 {
     margin: 1rem;
     font-size: 3rem;
@@ -86,6 +87,7 @@ p {
     z-index: 1000; 
     text-align: center; 
 }
+
 #my-team {
     background: linear-gradient(to right, #660099, #ff66b3);
     padding: 20px;
