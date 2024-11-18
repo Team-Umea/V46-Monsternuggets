@@ -2,45 +2,45 @@ let myTeam = [];
 let monsters = [
     {
         "id": 0,
-        "name": "Count Dracula",
-        "speciality": "Sleep, spook, drink blood, repeat",
+        "name": "Count Dankula",
+        "speciality": "Posting dank memes",
         "image": "img.monsters/dracula.png",
         "strength": 6 
     },
     {
         "id": 1,
-        "name": "Fast Frankenstein's Monster",
-        "speciality": "Runs faster than you think",
+        "name": "Fingermonster",
+        "speciality": "Has many fingers",
         "image": "img.monsters/frankenstein.png"
     },
     {
         "id": 2,
         "name": "Ghost",
-        "speciality": "Rattle some chains",
+        "speciality": "Rattles some chains",
         "image": "img.monsters/ghost.png"
     },
     {
         "id": 3,
         "name": "Jason",
-        "speciality": "What doesn't this psychopath do",
+        "speciality": "King of handling JSON-data",
         "image": "img.monsters/Jason.png"
     },
     {
         "id": 4,
         "name": "The Hulk",
-        "speciality": "Possesses the capacity for essentially limitless physical strength",
+        "speciality": "Green man stronk",
         "image": "img.monsters/theHulk.png"
     },
     {
         "id": 5,
         "name": "Scarecrow",
-        "speciality": "If you have trouble with crows on your crops",
+        "speciality": "Scarer of crows",
         "image": "img.monsters/scarecrow.png"
     },
     {
         "id": 6,
-        "name": "Troll",
-        "speciality": "A gentle soul who wants to be your ally (read friend)",
+        "name": "Troll-demon",
+        "speciality": "Frend",
         "image": "img.monsters/troll.png"
     },
     {
@@ -52,7 +52,7 @@ let monsters = [
     {
         "id": 8,
         "name": "Fire monster",
-        "speciality": "Fight Fire with Fire",
+        "speciality": "Fights Fire with Fire",
         "image": "img.monsters/firemonster.png"
     },
     {
