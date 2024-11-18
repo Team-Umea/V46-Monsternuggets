@@ -1,3 +1,4 @@
+//! Tobias
 let myTeam = []; 
 let monsters = [
     {
@@ -61,7 +62,7 @@ let monsters = [
         "image": "img.monsters/watermonster.png"
     }
 ];
-
+//! Robin 
 function displayMonsters() {
     const catalog = document.getElementById("monster-catalog");
     catalog.innerHTML = ""; 
@@ -108,7 +109,7 @@ function displayMonsters() {
 }
 
 
-
+//!Robin
 function renderTeam() {
     const teamSection = document.getElementById("my-team");
     teamSection.innerHTML = ""; 
@@ -150,7 +151,7 @@ function renderTeam() {
         teamSection.appendChild(teamDiv); 
     });
 }
-
+//!Frank
 function addToMyTeam(monster) {
     if (myTeam.length < 3) {
         myTeam.push(monster);
@@ -162,7 +163,7 @@ function addToMyTeam(monster) {
     renderTeam(); 
     displayMonsters()
 }
-
+//!Frank
 function removeFromMyTeam(monster) {
     for (let i = 0; i < myTeam.length; i++) {
         if (myTeam[i].id === monster.id) {
@@ -174,13 +175,25 @@ function removeFromMyTeam(monster) {
     renderTeam();
     displayMonsters()
 }
-
+//!Frank
+function errorHandling() {
+    const errorMessage = document.createElement("h4");
+    errorMessage.setAttribute("class","error");
+    errorMessage.innerText = "Your team is full!";
+    
+    
+    document.body.appendChild(errorMessage)
+    setTimeout(() => {
+        errorMessage.remove()
+    }, 3000);
+}
+//!Elias
 //Gör om listan till en string och sparar laget till Local Storage.
 function saveTeamToLocalStorage() {
     const teamJson = JSON.stringify(myTeam);
     localStorage.setItem("myTeam", teamJson);
 }
-
+//!Elias
 //Hämtar lagets JSON-data från Local Storage och konverterar tillbaks den.
 function loadTeamFromLocalStorage() {
     const teamJson = localStorage.getItem('myTeam');
@@ -193,26 +206,15 @@ function loadTeamFromLocalStorage() {
         
     }
 }
-
+//!Elias
 function clearLocalStorage() {
     localStorage.clear();
 }
-
+//!Elias
 function clearTeam() {
     myTeam = [];
 }
-function errorHandling() {
-    const errorMessage = document.createElement("h4");
-    errorMessage.setAttribute("class","error");
-    errorMessage.innerText = "Your team is full!";
-    
-    
-    document.body.appendChild(errorMessage)
-    setTimeout(() => {
-        errorMessage.remove()
-    }, 3000);
-}
-
+//! Tobias
 window.onload = () => {
     myTeam = loadTeamFromLocalStorage(); 
     displayMonsters(); 
