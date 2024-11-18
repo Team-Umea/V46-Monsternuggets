@@ -177,11 +177,13 @@ function removeFromMyTeam(monster) {
     displayMonsters()
 }
 
+//Gör om listan till en string och sparar laget till Local Storage.
 function saveTeamToLocalStorage() {
     const teamJson = JSON.stringify(myTeam);
     localStorage.setItem("myTeam", teamJson);
 }
 
+//Hämtar lagets JSON-data från Local Storage och konverterar tillbaks den.
 function loadTeamFromLocalStorage() {
     const teamJson = localStorage.getItem('myTeam');
     try {
@@ -201,10 +203,9 @@ function clearTeam() {
     myTeam = [];
 }
 function errorHandling() {
-    
     const errorMessage = document.createElement("h4");
     errorMessage.setAttribute("class","error");
-    errorMessage.innerText = "Your team is full";
+    errorMessage.innerText = "Your team is full!";
     
     
     document.body.appendChild(errorMessage)
