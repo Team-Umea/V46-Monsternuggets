@@ -5,7 +5,6 @@ let monsters = [
         "name": "Count Dankula",
         "speciality": "Posting dank memes",
         "image": "img.monsters/dracula.png",
-        "strength": 6 
     },
     {
         "id": 1,
@@ -186,6 +185,7 @@ function saveTeamToLocalStorage() {
 //Hämtar lagets JSON-data från Local Storage och konverterar tillbaks den.
 function loadTeamFromLocalStorage() {
     const teamJson = localStorage.getItem('myTeam');
+
     try {
         return teamJson ? JSON.parse(teamJson) : [];
         
