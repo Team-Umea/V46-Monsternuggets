@@ -203,7 +203,7 @@ function errorHandling() {
     
     const errorMessage = document.createElement("h4");
     errorMessage.setAttribute("class","error");
-    errorMessage.innerText = "Your team is full u need to clear player to add a new one";
+    errorMessage.innerText = "Your team is full";
     
     
     document.body.appendChild(errorMessage)
